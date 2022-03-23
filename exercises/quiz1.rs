@@ -8,19 +8,23 @@
 // more than 40 at once, each apple only costs 1! Write a function that calculates
 // the price of an order of apples given the quantity bought. No hints this time!
 
-// I AM NOT DONE
-
 // Put your function here!
-// fn calculate_apple_price {
+const NORMAL_PRICE: usize = 2;
+const DISCOUT_PRICE: usize = 1;
+const MIN_Q_FOR_DISCOUNT: usize = 41;
+
+fn calculate_apple_price(apples: usize) -> usize {
+    if apples < MIN_Q_FOR_DISCOUNT {
+        apples * NORMAL_PRICE
+    } else {
+        apples * DISCOUT_PRICE
+    }
+}
 
 // Don't modify this function!
 #[test]
 fn verify_test() {
-    let price1 = calculate_apple_price(35);
-    let price2 = calculate_apple_price(40);
-    let price3 = calculate_apple_price(65);
-
-    assert_eq!(70, price1);
-    assert_eq!(80, price2);
-    assert_eq!(65, price3);
+    assert_eq!(calculate_apple_price(35), 70);
+    assert_eq!(calculate_apple_price(40), 80);
+    assert_eq!(calculate_apple_price(65), 65);
 }
